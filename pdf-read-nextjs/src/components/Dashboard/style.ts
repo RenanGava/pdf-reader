@@ -51,12 +51,20 @@ export const SendFileStyle = styled.div`
     text-align: center;
     border-radius: 0.1rem;
     padding-top: 2rem;
+    position: relative;
     div > p{
         display: block;
         color: #1E1E26;
         font-weight: 700;
         font-size: 1.1rem;
         padding: 3rem;
+    }
+
+    input{
+        width: 100%;
+        height: 20rem;
+        position: absolute;
+        opacity: 0;
     }
 
 `
