@@ -2,10 +2,10 @@
 
 export class PdfFormated {
 
-    private pdfFile: Express.Multer.File
+    private pdfFile: string
 
-    constructor(file: Express.Multer.File) {
-        this.pdfFile = file
+    constructor(fileName: string) {
+        this.pdfFile = '/pdf' + fileName
     }
 
     async Init(){

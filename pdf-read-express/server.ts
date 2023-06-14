@@ -13,8 +13,7 @@ app.use(cors())
 
 app.post('/', upload.single('file'), (request: Request, response:Response) =>{
 
-    const pdfFormated = new PdfFormated(request.file).Init()
-
+    const pdfFormated = new PdfFormated(request.file.filename)
 
     return response.json({ok: true})
 })

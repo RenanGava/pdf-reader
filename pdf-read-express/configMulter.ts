@@ -4,7 +4,7 @@ import crypto from 'crypto'
 
 
 const MulterUpload = multer.diskStorage({
-    destination: '/pdf',
+    destination: __dirname + '/pdf',
     filename: (req, file, cb) =>{
         const fileHash = crypto.randomBytes(16).toString('hex')
         const fileName = `${fileHash}-${file.originalname}`
