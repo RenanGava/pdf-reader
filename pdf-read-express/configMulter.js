@@ -5,7 +5,7 @@ import path from 'path'
 
 
 const MulterUpload = multer.diskStorage({
-    destination: path.__dirname + '/pdf',
+    destination:'./pdf',
     filename: (req, file, cb) =>{
         const fileHash = crypto.randomBytes(16).toString('hex')
         const fileName = `${fileHash}-${file.originalname}`

@@ -679,6 +679,11 @@ string_decoder@~1.1.1:
   dependencies:
     safe-buffer "~5.1.0"
 
+stringifystream@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/stringifystream/-/stringifystream-1.0.5.tgz#7889c10a5e1c62a093fc75f0b6ea8d6ae89f646f"
+  integrity sha512-dpqb8hHXL+I+pLrdMlPF9He3unl2iPsvepBHCaWEDqt7rtx0iS4lIRN0hJv5dMZqb6xVFQUgUqGh2F4YExwm0A==
+
 supports-color@^5.5.0:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-5.5.0.tgz#e2e69a44ac8772f78a1ec0b35b689df6530efc8f"
