@@ -20,6 +20,8 @@ export function Dashboard() {
 
 
         const response = await axios.post('http://localhost:3333/', data)
+
+        console.log(response.data);
     }
 
     return (

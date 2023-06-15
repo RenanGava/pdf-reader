@@ -1,6 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-import { PdfFormated } from './PdfFormated.js';
+import { PdfToString } from './PdfToString.js';
 
 import { upload } from './configMulter.js'
 const app = express()
@@ -12,11 +12,17 @@ app.use(cors())
 
 app.post('/', upload.single('file'), (request, response) => {
 
-    console.log(request.file)
+    // console.log(request.file.filename)
 
-    const pdfFormated = new PdfFormated(request.file.filename).ParseStringLines()
+    const pdfFormated = new PdfToString(request.file.filename)
 
-    return response.json({ ok: true })
+    pdfFormated.ConvertToString().then( pdfContent =>{
+        return response.json({text: pdfContent})
+    }).catch( error =>{
+        console.log(error);
+    })
+
+    
 })
 
 app.listen(3333, () => {
