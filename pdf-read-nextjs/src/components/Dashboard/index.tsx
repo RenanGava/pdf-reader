@@ -9,7 +9,7 @@ export function Dashboard() {
 
     const [pdf, setPdf] = useState([])
 
-    function handleUploadFile(event: ChangeEvent<HTMLInputElement>) {
+    async function handleUploadFile(event: ChangeEvent<HTMLInputElement>) {
 
         const data = new FormData()
 
@@ -19,7 +19,7 @@ export function Dashboard() {
         
 
 
-        axios.post('http://localhost:3333/', data)
+        const response = await axios.post('http://localhost:3333/', data)
     }
 
     return (
