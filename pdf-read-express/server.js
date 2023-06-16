@@ -22,7 +22,6 @@ app.post('/', upload.single('file'), (request, response) => {
         console.log(error);
     })
 
-    
 })
 
 app.listen(3333, () => {
