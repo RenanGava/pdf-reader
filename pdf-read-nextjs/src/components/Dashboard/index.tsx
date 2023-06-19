@@ -2,12 +2,15 @@
 import { Container, Content, SendFileStyle } from "./style";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpFromBracket } from '@fortawesome/free-solid-svg-icons'
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 import axios from "axios";
+import { UsePdf2Audio } from "@/context/usePdf2Audio";
 
 export function Dashboard() {
 
     const [pdf, setPdf] = useState([])
+    const [text, setText] = useState('')
+    const { ConvertToAudio, pause } = UsePdf2Audio()
 
     async function handleUploadFile(event: ChangeEvent<HTMLInputElement>) {
 
@@ -19,9 +22,18 @@ export function Dashboard() {
         
 
 
-        const response = await axios.post('http://localhost:3333/', data)
+        const {data: { text }} = await axios.post('http://localhost:3333/', data)
 
-        console.log(response.data);
+        ConvertToAudio(text)
+        
+
+        
+        setTimeout(() =>{
+            console.log('Pausado');
+            // aqui é para pausar o audio vem direto do contexto
+            pause()
+        }, 3000)
+
     }
 
     return (

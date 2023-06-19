@@ -1,6 +1,7 @@
 import { Roboto, Roboto_Mono } from 'next/font/google'
 import { GlobalStyle } from './styles/global'
 import StyledComponentsRegistry from './lib/registry'
+import { Pdf2AudioProvider } from '@/context/usePdf2Audio'
 
 export const roboto = Roboto({
   subsets: ['latin'],
@@ -19,7 +20,9 @@ export default function RootLayout({ children }: {
   return (
     <html lang="pt-br" className={roboto_mono.className}>
       <body>
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        <Pdf2AudioProvider>
+          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        </Pdf2AudioProvider>
       </body>
       <GlobalStyle />
     </html>

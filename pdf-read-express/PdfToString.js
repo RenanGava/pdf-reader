@@ -1,3 +1,4 @@
+import { unlink } from 'fs'
 import Pdfparser from 'pdf2json'
 
 
@@ -13,7 +14,7 @@ export class PdfToString {
         this.Pdfparser = new Pdfparser()
     }
 
-    #ProcessPDF(resolve, reject) {
+    async #ProcessPDF(resolve, reject) {
 
         this.Pdfparser.on("pdfParser_dataReady", (pdfData) => {
             let pdfContent = ''
@@ -23,16 +24,18 @@ export class PdfToString {
                     pdfContent += decodeURIComponent(text.R[0].T)
                 }
             }
-
-            console.log(pdfContent);
-            resolve(pdfContent.split('Material para uso exclusivo de aluno matriculado em curso de Educação a Distância da Rede Senac EAD, da disciplina correspondente. Proibida a reprodução e o compartilhamento digital, sob as penas da Lei. © Editora Senac São Paulo.'))
+            resolve(pdfContent)
         })
 
         this.Pdfparser.on("pdfParser_dataError", error => {
             reject(error)
         })
 
-        this.Pdfparser.loadPDF('./pdf/' + this.#file)
+        await this.Pdfparser.loadPDF('./pdf/' + this.#file)
+        unlink('./pdf/' + this.#file,  (err) =>{
+            if(err) throw err
+            console.log('Arquivo Deletado');
+        })
     }
 
 
