@@ -8,31 +8,19 @@ import { UsePdf2Audio } from "@/context/usePdf2Audio";
 
 export function Dashboard() {
 
-    const [pdf, setPdf] = useState([])
-    const [text, setText] = useState('')
-    const { ConvertToAudio, pause } = UsePdf2Audio()
+    const { ConvertToAudio, pause, synth } = UsePdf2Audio()
 
     async function handleUploadFile(event: ChangeEvent<HTMLInputElement>) {
+        event.preventDefault()
 
         const data = new FormData()
 
         data.append('file', event.target.files[0])
-        
-        console.log(data);
-        
-
 
         const {data: { text }} = await axios.post('http://localhost:3333/', data)
+        
 
         ConvertToAudio(text)
-        
-
-        
-        setTimeout(() =>{
-            console.log('Pausado');
-            // aqui é para pausar o audio vem direto do contexto
-            pause()
-        }, 3000)
 
     }
 
