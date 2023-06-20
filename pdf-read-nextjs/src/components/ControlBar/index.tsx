@@ -8,17 +8,16 @@ import { useState } from "react";
 
 export function ControlBar() {
 
-    const { resume, pause, speaking } = UsePdf2Audio()
-    const [inAudio, setInAudio] = useState<boolean>(!speaking)
+    const { resume, pause, cancel, synth } = UsePdf2Audio()
+    const [inAudio, setInAudio] = useState<boolean>(true)
 
-    function handlePauseAndResume(){
-        
+    function handlePauseAndResume(){        
+
+        setInAudio(!inAudio)
 
         if(inAudio){
-            setInAudio(false)
             pause()
         }else{
-            setInAudio(true)
             resume()
         }
     }
@@ -36,13 +35,13 @@ export function ControlBar() {
                             <FontAwesomeIcon
                                 color="#E82D92"
                                 size="4x"
-                                icon={faPlay}
+                                icon={faPause}
                             />
                             :
                             <FontAwesomeIcon
                                 size="4x"
                                 color="#E82D92"
-                                icon={faPause}
+                                icon={faPlay}
                             />
                         }
 
@@ -50,7 +49,7 @@ export function ControlBar() {
                     </button>
                 }
                 <button
-                    onClick={() => pause()}
+                    onClick={() => cancel()}
                 >
                     <FontAwesomeIcon
                         size="4x"

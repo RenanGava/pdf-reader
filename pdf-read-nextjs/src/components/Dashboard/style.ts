@@ -61,9 +61,13 @@ export const SendFileStyle = styled.div`
     }
 
     input{
-        width: 100%;
-        height: 20rem;
+        /* width: 100%;
+        height: 20rem; */
         position: absolute;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
         opacity: 0;
     }
 

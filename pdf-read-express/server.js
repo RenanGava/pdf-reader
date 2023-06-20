@@ -1,3 +1,4 @@
+import "express-async-errors"
 import express from 'express'
 import cors from 'cors'
 import { PdfToString } from './PdfToString.js';
@@ -20,6 +21,17 @@ app.post('/', upload.single('file'), (request, response) => {
         return response.json({text: pdfContent})
     }).catch( error =>{
         console.log(error);
+    })
+
+})
+
+app.use((error, request, response, next) =>{
+
+    console.log(error);
+
+    return response.json({
+        status: "Error ",
+        message: error.message,
     })
 
 })

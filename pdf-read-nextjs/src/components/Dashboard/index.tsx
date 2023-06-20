@@ -8,7 +8,7 @@ import { UsePdf2Audio } from "@/context/usePdf2Audio";
 
 export function Dashboard() {
 
-    const { ConvertToAudio, pause, synth } = UsePdf2Audio()
+    const { ConvertToAudio, pause, synth, speaking } = UsePdf2Audio()
 
     async function handleUploadFile(event: ChangeEvent<HTMLInputElement>) {
         event.preventDefault()
@@ -31,6 +31,7 @@ export function Dashboard() {
                     <input
                         type="file"
                         onChange={handleUploadFile}
+                        disabled= {speaking}
                     />
                     <div>
                         <FontAwesomeIcon
