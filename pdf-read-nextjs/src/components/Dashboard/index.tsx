@@ -7,6 +7,10 @@ import axios from "axios";
 import { UsePdf2Audio } from "@/context/usePdf2Audio";
 import { ControlBar } from "../ControlBar";
 
+import { config } from 'dotenv'
+
+config()
+
 export function Dashboard() {
 
     const { ConvertToAudio, speaking } = UsePdf2Audio()
@@ -27,12 +31,18 @@ export function Dashboard() {
 
         // data.append('file', event.target.files[0])
         
-        const { data: { text } } = await axios.post(process.env.API_URL, data)
+        const { data: { text } } = await axios.post(process.env.API_URL, data, {
+            headers: {
+                'Content-type': 'application/json'
+            }
+        })
 
 
         ConvertToAudio(text)
 
     }
+
+    console.log(process.env.API_URL);
 
     return (
         <Container>

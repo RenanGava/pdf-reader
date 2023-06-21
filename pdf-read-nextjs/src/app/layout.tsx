@@ -2,9 +2,6 @@ import { Roboto_Mono } from 'next/font/google'
 import { GlobalStyle } from './styles/global'
 import StyledComponentsRegistry from './lib/registry'
 import { Pdf2AudioProvider } from '@/context/usePdf2Audio'
-import { config } from 'dotenv'
-
-config()
 
 const roboto_mono = Roboto_Mono({
   subsets: ['latin'],
