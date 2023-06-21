@@ -31,11 +31,9 @@ export function Dashboard() {
 
         // data.append('file', event.target.files[0])
         
-        const { data: { text } } = await axios.post(process.env.API_URL, data, {
-            headers: {
-                'Content-type': 'application/json'
-            }
-        })
+        const { data: { text } } = await axios.post('https://pdf-read.fly.dev/', data)
+        console.log(text);
+        
 
 
         ConvertToAudio(text)
