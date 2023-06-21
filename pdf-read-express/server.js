@@ -2,8 +2,10 @@ import "express-async-errors"
 import express from 'express'
 import cors from 'cors'
 import { PdfToString } from './PdfToString.js';
-
+import { config } from 'dotenv'
 import { upload } from './configMulter.js'
+
+config()
 const app = express()
 
 
@@ -36,6 +38,6 @@ app.use((error, request, response, next) =>{
 
 })
 
-app.listen(3333, () => {
+app.listen(process.env.PORT, () => {
     console.log('Server is Running!')
 })
