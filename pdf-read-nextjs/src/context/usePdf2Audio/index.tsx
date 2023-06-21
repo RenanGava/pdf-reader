@@ -1,5 +1,5 @@
 "use client"
-import { useContext, createContext, useState, ReactNode } from 'react'
+import { useContext, createContext, useState, useEffect, ReactNode } from 'react'
 
 interface PdfReadContextProviderProps {
     children: ReactNode
@@ -19,9 +19,15 @@ const Pdf2AudioContext = createContext<PdfReadContextData>({} as PdfReadContextD
 export function Pdf2AudioProvider({ children }: PdfReadContextProviderProps) {
 
     const [speaking, setSpeaking] = useState<boolean>(false)
+    const [synth, setSynth] = useState<SpeechSynthesis>()
 
+    useEffect(() =>{
+        if(window){
+            setSynth(window.speechSynthesis)
+        }
+    },[])
+    
     // aqui instaciamos o método que trasnforma string em áudio.
-    const synth = window.speechSynthesis;
 
     function ConvertToAudio(text: string) {
         // aqui convertemos a string para um formato

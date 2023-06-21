@@ -5,7 +5,7 @@ import styled from 'styled-components'
 export const Container = styled.div`
     width: 100%;
     max-width: 200px;
-    margin: 0 auto;
+    margin: 0 auto 1rem auto;
 `
 
 export const Content = styled.div`

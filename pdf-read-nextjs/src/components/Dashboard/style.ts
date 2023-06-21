@@ -7,8 +7,9 @@ export const Container = styled.main`
     height: calc(100vh - 5rem);
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
-    padding: 1rem;
+    padding: 3rem;
 `
 
 export const Content = styled.div`
