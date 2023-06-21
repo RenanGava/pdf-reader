@@ -5,7 +5,7 @@ import Link from 'next/link'
 export function Header(){
     return(
         <Container>
-            <h1>Trasnlate PDF</h1>
+            <h1>Translate PDF</h1>
             <Link
                 href='/about'
             >
