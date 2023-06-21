@@ -21,7 +21,8 @@ export default function RootLayout({ children }: {
     <html lang="pt-br" className={roboto_mono.className}>
       <body>
         <Pdf2AudioProvider>
-          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+          {/* <StyledComponentsRegistry></StyledComponentsRegistry> */}
+          {children}
         </Pdf2AudioProvider>
       </body>
       <GlobalStyle />
