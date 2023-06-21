@@ -27,7 +27,7 @@ export function Dashboard() {
 
         // data.append('file', event.target.files[0])
         
-        const { data: { text } } = await axios.post('http://localhost:3333/', data)
+        const { data: { text } } = await axios.post(process.env.API_URL, data)
 
 
         ConvertToAudio(text)
